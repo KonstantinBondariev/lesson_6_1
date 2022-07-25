@@ -1,0 +1,234 @@
+* {
+  box-sizing: border-box;
+}
+.conteiner {
+  max-width: 1024px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+    "hd hd hd"
+    "lf mn rg"
+    "ft ft ft";
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 100px 1fr 30px;
+  gap: 10px;
+  background-color: gray; 
+}
+@media (max-width: 1200px) {
+  .conteiner {
+    gap: 5px;
+  }
+}
+@media (max-width: 992px) {
+  .conteiner {
+    grid-template-areas:
+      "hd hd"
+      "mn mn"
+      "lf rg"
+      "ft ft";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px 2fr 1fr 30px;
+    gap: 10px;
+  }  
+}
+@media (max-width: 768px) {
+  .conteiner {
+    grid-template-areas:
+    "hd"
+    "mn"
+    "lf"
+    "rg"
+    "ft";
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 3fr 1fr 1fr 30px;
+  }
+  .footer {
+    font-size: 0.8em;
+  }
+}
+.header {
+  grid-area: hd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: blue;
+}
+.main {
+  grid-area: mn;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: green;
+}
+.left {
+  grid-area: lf;
+  background-color: greenyellow;
+  padding: 10px;
+}
+.right {
+  grid-area: rg;
+  background-color: rgb(0, 87, 0);
+}
+.footer {
+  grid-area: ft;
+  display: flex;
+  align-items: center;
+  background-color: rgb(1, 33, 1);
+  color: white;
+}
+.header__logo {
+  width: 100px;
+  padding: 20px 20px 16px 20px;
+}
+.header__logo img {
+  max-width: 100%;
+}
+.nav-bar {
+  margin: 0 1rem;
+  display: flex;
+  font-size: 1.5rem;
+}
+.nav-bar a {
+  text-decoration: none;
+  color: white;
+}
+.nav-bar__items {
+}
+.nav-bar__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 40px;
+  list-style: none;
+  background-color: chartreuse;
+  border-radius: 0.2em;
+  transition: background-color 0.5s;
+}
+.nav-bar__item:hover {
+  background-color: rgb(234, 255, 0);
+}
+.content {
+  max-width: 100%;
+}
+.carousel {
+  max-width: 100%;
+  display: flex;
+  height: 80px;
+  background-color: #fff;
+  position: relative;
+}
+.carousel__slide {
+  display: flex;
+  align-items: center;
+  animation: slideshow 30s linear infinite;
+  }
+.carousel::before,
+.carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 25%;
+  height: 80px;
+  z-index: 1;
+  background: linear-gradient(to right, #ffffff 0%, transparent 100%);
+}
+.carousel::before {
+  left: 0;
+}
+.carousel::after {
+  right: 0;
+  transform: rotateZ(180deg);
+}
+.carousel:hover > .carousel__slide {
+  animation-play-state: paused;
+}
+.carousel__image {
+  display: block;
+  width: auto;
+  height: calc(100% - 30px);
+  margin: 0 20px;
+}
+.footer__copyright {
+}
+.copyright {
+  min-width: calc(100% - 40px);
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.copyright__author {
+}
+.copyright__email {
+}
+@keyframes slideshow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+//timer 
+.left__timer {
+}
+.timer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  font-size: 1.5em;
+}
+.timer p {
+  margin: 0;
+  padding: 0;
+  margin-top: 7px;
+}
+.timer__field {
+  width: 100px;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: rgb(0, 87, 0);
+  border: 2px solid yellow;
+  border-radius: 5px;
+}
+.timer__field:last-child {
+  margin-right: 10px;
+}
+.timer__sec,
+.timer__min {
+  width: 30px;
+  height: 40px;
+  margin: 5px;
+  background: #ffffff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+.timer__sec--01 .timer__wrapper {
+  animation: time 10s linear infinite;
+}
+.timer__sec--10 .timer__wrapper {
+  animation: time 60s steps(6, end) infinite;
+}
+.timer__min {
+}
+.timer__min--01 .timer__wrapper {
+  animation: time 600s linear infinite;
+}
+.timer__min--10 .timer__wrapper {
+  animation: time 3600s steps(6, end) infinite;
+}
+@keyframes time {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
